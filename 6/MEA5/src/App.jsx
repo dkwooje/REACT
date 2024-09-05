@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 
 import Places from './components/Places.jsx';
 import { AVAILABLE_PLACES } from './data.js';
@@ -8,20 +8,13 @@ import logoImg from './assets/logo.png';
 import { sortPlacesByDistance } from './loc.js';
 
 
-const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
-const storedPlaces = storedIds.map(id=>AVAILABLE_PLACES.find((place) => place.id === id));
-//밖으로 빼두면 App 컴포넌트가 실행되면 딱 한번만 실행 된다.
 function App() {
-
- //const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
- // const storedPlaces = storedIds.map(id=>AVAILABLE_PLACES.find((place) => place.id === id));
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const selectedPlace = useRef();
   const [availablePlaces, setAvailablePlaces] = useState([]);
-  const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
+  const [pickedPlaces, setPickedPlaces] = useState([]);
 
-
+  //위치를 가져오는 코드 
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition((position)=>{
       const sortedPlaces = sortPlacesByDistance
@@ -43,29 +36,38 @@ function App() {
     setModalIsOpen(false);
   }
 
-  function handleSelectPlace(id) {
-    setPickedPlaces((prevPickedPlaces) => {
-      if (prevPickedPlaces.some((place) => place.id === id)) { 
-        return prevPickedPlaces;
-      }
-      const place = AVAILABLE_PLACES.find((place) => place.id === id);
-      return [place, ...prevPickedPlaces];
-    });
-  }
+function handleSelectPlace(id) {
+  setPickedPlaces((prevPickedPlaces) => {
+    if (prevPickedPlaces.some((place) => place.id === id)) {
+      return prevPickedPlaces;
+    }
+    const place = AVAILABLE_PLACES.find((place) => place.id === id);
+    return [place, ...prevPickedPlaces];
+  });
 
-  function handleRemovePlace() {
-    setPickedPlaces((prevPickedPlaces) =>
-      prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
+  const storedIds = JSON.parse(localStorage.getItem('selectedPlace')) || []; 
+  if (storedIds.indexOf(id) === -1) {
+    localStorage.setItem('selectedPlace', JSON.stringify([id, ...storedIds]));
+  }
+}
+  
+const handleRemovePlace = useCallback(function handleRemovePlace() {  //g하지만 usecallback 덕분에 타이머는 무한 루트에 빠지지 않는다.
+  setPickedPlaces((prevPickedPlaces) =>
+    prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
+  );
+  setModalIsOpen(false);  //이게 없으면 타이머는 무한 루프에 빠진다.
+
+  const storedIds = JSON.parse(localStorage.getItem('selectedPlace')) || [] ;
+  localStorage.setItem('selectedPlace', 
+    JSON.stringify(storedIds.filter((id)=>id != selectedPlace.current))
     );
-    setModalIsOpen(false);
-
-    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
-    localStorage.setItem('selectedPlaces', JSON.stringify(storedIds.filter((id)=>id !== selectedPlace.current)))
-  }
+  }, []
+);
+  
 
   return (
     <>
-      <Modal ref={modalIsOpen}>
+      <Modal open={modalIsOpen} onClose={handleStopRemovePlace}>
         <DeleteConfirmation
           onCancel={handleStopRemovePlace}
           onConfirm={handleRemovePlace}
