@@ -1,6 +1,5 @@
 import reactImg from './assets/react-core-concepts.png';
-//import componentsImg from './assets/components.png';
-import {CORE_CONCEPTS}from './data.js'; //export 끌어오려면 {}를 이용해야한다.
+import {CORE_CONCEPTS}from './data.js'; 
 
 const reactDescriptions = ['근본적인', '치명적인', '핵심']
 
@@ -20,17 +19,7 @@ function Header(){ //컴포넌트 만들기
   </header>
   );
 } 
-/*
-function CoreConcept(props){
-  return(
-    <li>
-      <img src={props.image} alt={props.title} />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-    </li>
-  )
-}
-*/
+
 function CoreConcept({image, title, description}){
   return(
     <li>
@@ -56,12 +45,7 @@ function App() {
         </section>
       </main>
     </div>
-  ); //컴포넌트 사용 <Header /> 
+  ); 
 }
-//<CoreConcept title="컴포넌트" description="UI제작을 위한 핵심 블럭" img={componentsImg}/>
-//<CoreConcept title={CORE_CONCEPTS[0].title} description={CORE_CONCEPTS[0].description} image={CORE_CONCEPTS[0].image}/>
-//<CoreConcept title={CORE_CONCEPTS[1].title} description={CORE_CONCEPTS[1].description} image={CORE_CONCEPTS[1].image}/>
-//<CoreConcept title={CORE_CONCEPTS[2].title} description={CORE_CONCEPTS[2].description} image={CORE_CONCEPTS[2].image}/>
-//<CoreConcept title={CORE_CONCEPTS[3].title} description={CORE_CONCEPTS[3].description} image={CORE_CONCEPTS[3].image}/>
 
 export default App;

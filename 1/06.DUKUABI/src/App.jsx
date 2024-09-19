@@ -13,7 +13,6 @@ const CONTENTS =[
     description:"상세배우기3"
   }
 ]
-*/
 
 export function CourseGoal({title,description}) {
   return (
@@ -24,7 +23,7 @@ export function CourseGoal({title,description}) {
   );
 }
 
-/*
+
 function App() {
   return (
     <div id="app" data-testid="app">
@@ -40,6 +39,18 @@ function App() {
 }
 */
 
+
+
+export function CourseGoal({title,description}) {
+  return (
+    <li>
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </li>
+  );
+}
+
+
 function App() {
   return (
     <div id="app" data-testid="app">
@@ -53,5 +64,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
