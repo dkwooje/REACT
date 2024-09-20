@@ -6,10 +6,12 @@ import NewEventPage from './pages/NewEventPage';
 import EditEventPage from './pages/EditEventPage';
 import RootLayout from './pages/Root';
 import EventsRootLayout from './pages/EventsRoot';
+import ErrorPage from './pages/Error';
 
 const router = createBrowserRouter([
   {path: '/', 
    element: <RootLayout/>,
+   errorElement: <ErrorPage />,
     children:[
       {index: true , 
        element: <HomePage/>},
@@ -20,6 +22,7 @@ const router = createBrowserRouter([
       {
        index: true ,
        element: <EventsPage />,
+       errorElement: <ErrorPage />,
        loader: eventLoader,
      },  //http 리퀘스트를 발생시키는 컴포넌트(데이터를 가져옴), Loader : 렌더링 되기 직전
       {path: ':eventId', element: <EventDetailPage />},
