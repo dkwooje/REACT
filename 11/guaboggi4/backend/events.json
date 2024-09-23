@@ -1,11 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    }
-  ]
-}
+{"events":[{"title":"신규 이벤트","image":"https://www.tippingkorea.co.kr/data/upload/16855321922.png","date":"2024-09-11","description":"https://www.tippingkorea.co.kr/data/upload/16855321922.png","id":"112ec402-f012-4515-a3f3-f3372931e9a8"},{"title":"폐휴대폰반납","image":"https://d11o63lgw0n6wa.cloudfront.net/images/events/36/web.png","date":"2024-09-23","description":"폐 휴대폰 반납하자","id":"417d0de9-18f3-48d9-988d-daec1531f7ef"},{"id":"e1","title":"A dummy event","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}
