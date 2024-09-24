@@ -3,7 +3,7 @@ import PageContent from '../components/PageContent';
 
 function NewsletterPage() {
   return (
-    <PageContent title="Join our awesome newsletter!">
+    <PageContent title="뉴스 레터를 구독해봅시다!">
       <NewsletterSignup />
     </PageContent>
   );
@@ -17,5 +17,5 @@ export async function action({ request }) {
 
   // send to backend newsletter server ...
   console.log(email);
-  return { message: 'Signup successful!' };
+  return { message: '구독 성공!' };
 }
