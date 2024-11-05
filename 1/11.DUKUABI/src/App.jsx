@@ -9,6 +9,8 @@ import TabButton from './components/TabButton.jsx';
 function App() {
       function handleClick(selectedButton){
        console.log(`${selectedButton}이 클릭되었습니다.`);}
+       console.log(selectedButton + '이 클릭 되었습니다.');
+      
         function one(){
           handleClick('components');
         }
