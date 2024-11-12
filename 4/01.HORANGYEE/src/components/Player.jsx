@@ -20,3 +20,27 @@ function handleClick(){
     </section>
   );
 }
+
+/*
+
+export default function Player(){
+  
+  const [enteredPlayerName,setEnteredPlayerName] = useState(null);
+
+  function handleInputChange(e){
+    setEnteredPlayerName(e.target.value);
+  }
+
+
+  return(
+      <section id="player">
+        <h2>{enteredPlayerName ?? '익명'}환영합니다.</h2>
+        <p>
+        <input type="text" 
+        onChange={handleInputChange} 
+        value={enteredPlayerName} />
+        </p>
+      </section>
+  )
+}
+  */
