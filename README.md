@@ -1,6 +1,6 @@
 React 실전 공부
 
-React로 활용할 수 있는 기법을 정리한 리포지토리 입니다.
+React로 활용할 수 있는 기법을 정리한 리포지토리 입니다..
 
 ![스크린샷(52)](https://github.com/user-attachments/assets/be02dcd9-d77c-4306-b33e-c7d1bd6bc114)
 ![스크린샷(53)](https://github.com/user-attachments/assets/e8e16bca-2876-480c-815b-5f5e34012092)
